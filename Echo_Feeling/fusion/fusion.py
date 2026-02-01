@@ -145,14 +145,13 @@ print(classification_report(y_test, y_pred))
 # -------------------------------
 # 6. Save Fused Data for Training
 # -------------------------------
-fused_df = pd.DataFrame(X, columns=[f'feat_{i}' for i in range(X.shape[1])])
-fused_df['label'] = y
-fused_output_path = r"C:\Users\arun\Desktop\ECHO FEELING\Echo_Feeling\extraction\fused_sentiment_data.csv"
+fused_output_path = r"C:\Users\arun\Desktop\ECHO FEELING\Echo_Feeling\fusion\fused_sentiment_data.csv"
 os.makedirs(os.path.dirname(fused_output_path), exist_ok=True)
 fused_df.to_csv(fused_output_path, index=False)
 print(f"✅ Fused data saved to {fused_output_path}. Use this CSV to train your sentiment analysis model.")
 
-# Optional: Save the trained fusion model
+# Optional: Save the trained fusion model in the same fusion folder
 import joblib
-joblib.dump(clf, 'fused_sentiment_model.pkl')
-print("Trained fusion model saved as 'fused_sentiment_model.pkl'")
+model_output_path = r"C:\Users\arun\Desktop\ECHO FEELING\Echo_Feeling\fusion\fused_sentiment_model.pkl"
+joblib.dump(clf, model_output_path)
+print(f"Trained fusion model saved as '{model_output_path}'")
